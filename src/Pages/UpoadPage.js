@@ -32,23 +32,40 @@ const UploadPage = () => {
       }else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
       }
+      let promises=[]
+      promises.push(
       axios.post(url, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
       .then(response => {
-        setUploadMessage('Upload successful!');
+        //console.log(response.headers)
+        return response
+
+      })
+      .catch(error => {
+        setUploadMessage('Error uploading files. Please try again.');
+        console.error('Error processing files:', error);
+      }));
+      Promise.all(promises)
+      .then(res=>{
+        console.log(res[0])
+        const rejectedFilesHeader = res[0].headers.rejected_files;
+        if (rejectedFilesHeader) {
+          setUploadMessage(`Parsing successful!\nRejected Files: ${rejectedFilesHeader}`);
+        }else{
+          setUploadMessage('Parsing Successful with no Rejected files!');
+        }
+        
         setIsloading(false)
         // Handle rejected files, if any
-        const rejectedFilesHeader = response.headers.rejected_files;
-        if (rejectedFilesHeader) {
-          setUploadMessage(`Rejected Files: ${rejectedFilesHeader}`);
-        }
+        
+        
 
         // Prepare download link for processed data
         const csvHeader = 'Ref, Job No, Customer, Location B, Qty, Width, Height, Glass type, Location A, Glass Required';
-        const csvDataWithHeader = csvHeader + '\n' + response.data;
+        const csvDataWithHeader = csvHeader + '\n' + res[0].data;
         const blob = new Blob([csvDataWithHeader], { type: 'text/csv' });
         const downloadUrl = URL.createObjectURL(blob);
 
@@ -57,12 +74,7 @@ const UploadPage = () => {
           text: 'Download Processed Data',
           download: 'processed_data.csv',
         });
-
       })
-      .catch(error => {
-        setUploadMessage('Error uploading files. Please try again.');
-        console.error('Error processing files:', error);
-      });
     } else {
       setUploadMessage('Please select a card and some files before uploading.');
     }
@@ -98,20 +110,21 @@ const UploadPage = () => {
         selectedCard={selectedCard}
         handleCardClick={handleCardClick}
       />
-      <input type="file" multiple onChange={handleFileChange} className="centered-div" />
-      <div className="centered-div">
-        {loading ? (<h1>Loading..</h1>): (  <button
+      <input type="file" multiple onChange={handleFileChange}  />
+      <div >
+        {loading ? (<h3 className='loading-text'>Loading..</h3>): ( 
+          <button
           disabled={!selectedCard || selectedFiles.length === 0}
           onClick={handleUpload}
           className="button"
-          style={{ marginTop: "10rem" }}
+          style={{ marginTop: "5rem",marginLeft:'-12rem' }}
         >
           Upload Files
         </button>)}
       
       </div>
       <div>
-        {uploadMessage && <p>{uploadMessage}</p>}
+        {uploadMessage && <pre style={{fontFamily:'sans-serif',marginLeft:'60%'}}>{uploadMessage}</pre>}
         {downloadLink && (
           <a
             href={downloadLink.href}
