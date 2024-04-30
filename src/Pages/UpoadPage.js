@@ -28,9 +28,9 @@ const UploadPage = () => {
       }
       let url =""
       if(selectedCard == "wiltshire" || selectedCard =="business-macro"){
-        url = 'http://localhost:5000/process-pdf/'
+        url = 'http://13.40.49.127:5000/process-pdf/'
       }else{
-        url ="http://localhost:5000/process-pdf/trade-first"
+        url ="http://13.40.49.127:5000/process-pdf/trade-first"
       }
       axios.post(url, formData, {
         headers: {
