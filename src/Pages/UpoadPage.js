@@ -29,8 +29,13 @@ const UploadPage = () => {
       let url =""
       if(selectedCard == "wiltshire" || selectedCard =="business-macro"){
         url = 'http://13.40.49.127:5000/process-pdf/'
+        //url = 'http://0.0.0.0:5000/process-pdf/'
+      }else if(selectedCard=='choice'){
+        url ="http://13.40.49.127:5000/process-pdf/choice"
+        //url ="http://localhost:5000/process-pdf/choice"
       }else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
+        //url ="http://localhost:5000/process-pdf/trade-first"
       }
       let promises=[]
       promises.push(
@@ -81,7 +86,8 @@ const UploadPage = () => {
   };
 
   return (
-    <div className="card-container" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
+    <div className="card-container-two" >
+    <div className="card-container">
       <Card
         title="Business Macro"
         description="Business Macro"
@@ -110,27 +116,39 @@ const UploadPage = () => {
         selectedCard={selectedCard}
         handleCardClick={handleCardClick}
       />
-      <input type="file" multiple onChange={handleFileChange}  />
+      <Card
+        title="Choice"
+        description="Choice"
+        shortcode="choice"
+        selectedCard={selectedCard}
+        handleCardClick={handleCardClick}
+      />
+      </div>
+      
+      
+    <input type="file" multiple onChange={handleFileChange}  />
       <div >
-        {loading ? (<h3 className='loading-text'>Loading..</h3>): ( 
+        {loading ? (<h3 className='loading-text' style={{ marginTop: "22rem",marginLeft:'-35rem' }}>Loading..</h3>): ( 
           <button
           disabled={!selectedCard || selectedFiles.length === 0}
           onClick={handleUpload}
           className="button"
-          style={{ marginTop: "5rem",marginLeft:'-12rem' }}
+          style={{ marginTop: "22rem",marginLeft:'-35rem' }}
         >
           Upload Files
         </button>)}
       
       </div>
       <div>
-        {uploadMessage && <pre style={{fontFamily:'sans-serif',marginLeft:'60%'}}>{uploadMessage}</pre>}
+        {uploadMessage && <pre style={{fontFamily:'sans-serif',marginLeft:'-12rem',marginTop:'20rem'}}>{uploadMessage}</pre>}
         {downloadLink && (
           <a
             href={downloadLink.href}
             download={downloadLink.download}
             onMouseOver={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
             onMouseOut={(e) => (e.target.style.backgroundColor = 'green')}
+            
+          style={{marginLeft:'-8rem' }}
             className="downloadBtn"
           >
             {downloadLink.text}
