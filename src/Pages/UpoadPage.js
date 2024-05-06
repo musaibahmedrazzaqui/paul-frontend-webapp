@@ -37,7 +37,7 @@ const UploadPage = () => {
         url ="http://13.40.49.127:5000/process-pdf/alumate"
         //url ="http://localhost:5000/process-pdf/alumate"
       }else if(selectedCard =="thermaglaze"){
-          url ="http://13.40.49.127:5000/process-pdf/alumate"
+          url ="http://13.40.49.127:5000/process-pdf/thermaglaze"
           //url ="http://localhost:5000/process-pdf/thermaglaze"
       }
       else{
