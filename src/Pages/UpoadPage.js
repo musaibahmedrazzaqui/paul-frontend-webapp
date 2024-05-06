@@ -36,6 +36,9 @@ const UploadPage = () => {
       }else if(selectedCard=="alumate"){
         url ="http://13.40.49.127:5000/process-pdf/alumate"
         //url ="http://localhost:5000/process-pdf/alumate"
+      }else if(selectedCard =="thermaglaze"){
+          url ="http://13.40.49.127:5000/process-pdf/alumate"
+          //url ="http://localhost:5000/process-pdf/thermaglaze"
       }
       else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
@@ -131,6 +134,13 @@ const UploadPage = () => {
         title="Alumate"
         description="Alumate"
         shortcode="alumate"
+        selectedCard={selectedCard}
+        handleCardClick={handleCardClick}
+      />
+      <Card
+        title="Thermaglaze"
+        description="Thermaglaze"
+        shortcode="thermaglaze"
         selectedCard={selectedCard}
         handleCardClick={handleCardClick}
       />
