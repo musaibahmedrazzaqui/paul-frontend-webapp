@@ -33,7 +33,11 @@ const UploadPage = () => {
       }else if(selectedCard=='choice'){
         url ="http://13.40.49.127:5000/process-pdf/choice"
         //url ="http://localhost:5000/process-pdf/choice"
-      }else{
+      }else if(selectedCard=="alumate"){
+        //url ="http://13.40.49.127:5000/process-pdf/alumate"
+        url ="http://localhost:5000/process-pdf/alumate"
+      }
+      else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
         //url ="http://localhost:5000/process-pdf/trade-first"
       }
@@ -120,6 +124,13 @@ const UploadPage = () => {
         title="Choice"
         description="Choice"
         shortcode="choice"
+        selectedCard={selectedCard}
+        handleCardClick={handleCardClick}
+      />
+      <Card
+        title="Alumate"
+        description="Alumate"
+        shortcode="alumate"
         selectedCard={selectedCard}
         handleCardClick={handleCardClick}
       />
