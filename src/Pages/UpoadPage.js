@@ -73,7 +73,7 @@ const UploadPage = () => {
         
 
         // Prepare download link for processed data
-        const csvHeader = 'Ref, Job No, Customer, Location B, Qty, Width, Height, Glass type, Location A, Glass Required';
+        const csvHeader = 'Ref,JobNo,Customer,LocationB,Qty,Width,Height,GlassType,LocationA,GlassRequired';
         const csvDataWithHeader = csvHeader + '\n' + res[0].data;
         const blob = new Blob([csvDataWithHeader], { type: 'text/csv' });
         const downloadUrl = URL.createObjectURL(blob);
