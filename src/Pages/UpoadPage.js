@@ -34,8 +34,8 @@ const UploadPage = () => {
         url ="http://13.40.49.127:5000/process-pdf/choice"
         //url ="http://localhost:5000/process-pdf/choice"
       }else if(selectedCard=="alumate"){
-        //url ="http://13.40.49.127:5000/process-pdf/alumate"
-        url ="http://localhost:5000/process-pdf/alumate"
+        url ="http://13.40.49.127:5000/process-pdf/alumate"
+        //url ="http://localhost:5000/process-pdf/alumate"
       }
       else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
