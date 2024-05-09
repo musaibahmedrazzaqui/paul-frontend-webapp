@@ -41,7 +41,7 @@ const UploadPage = () => {
           //url ="http://localhost:5000/process-pdf/thermaglaze"
       }
       else if(selectedCard =="central"){
-        url ="http://13.40.49.127:5000/process-pdf/thermaglaze"
+        url ="http://13.40.49.127:5000/process-pdf/central"
         //url ="http://localhost:5000/process-pdf/central"
     }
       else{
@@ -97,91 +97,53 @@ const UploadPage = () => {
   };
 
   return (
-    <div className="card-container-two" >
-    <div className="card-container">
-      <Card
-        title="Business Macro"
-        description="Business Macro"
-        shortcode="business-macro"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
-      <Card
-        title="Trade Direct First Degree"
-        description="Trade Direct First Degree"
-        shortcode="trade-direct"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
-      <Card
-        title="Wiltshire"
-        description="Wiltshire"
-        shortcode="wiltshire"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
-      <Card
-        title="WindoorMate"
-        description="WindoorMate"
-        shortcode="windoormate"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
-      <Card
-        title="Choice"
-        description="Choice"
-        shortcode="choice"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
-      <Card
-        title="Alumate"
-        description="Alumate"
-        shortcode="alumate"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
-      <Card
-        title="Thermaglaze"
-        description="Thermaglaze"
-        shortcode="thermaglaze"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
-      <Card
-        title="Central"
-        description="Central"
-        shortcode="central"
-        selectedCard={selectedCard}
-        handleCardClick={handleCardClick}
-      />
+    <div className="upload-page">
+      <div className="card-container">
+        {/* Render cards */}
+        {[
+          { title: 'Business Macro', shortcode: 'business-macro' },
+          { title: 'Trade Direct First Degree', shortcode: 'trade-direct' },
+          { title: 'Wiltshire', shortcode: 'wiltshire' },
+          { title: 'WindoorMate', shortcode: 'windoormate' },
+          { title: 'Choice', shortcode: 'choice' },
+          { title: 'Alumate', shortcode: 'alumate' },
+          { title: 'Thermaglaze', shortcode: 'thermaglaze' },
+          { title: 'Central', shortcode: 'central' },
+        ].map((card) => (
+          <Card
+            
+            title={card.title}
+            description={card.title}
+            shortcode={card.shortcode}
+            selectedCard={selectedCard}
+            handleCardClick={handleCardClick}
+          />
+        ))}
       </div>
-      
-      
-    <input type="file" multiple onChange={handleFileChange}  />
-      <div >
-        {loading ? (<h3 className='loading-text' style={{ marginTop: "29rem",marginLeft:'-35rem' }}>Loading..</h3>): ( 
-          <button
+
+      <div className="file-upload-container">
+        <input
+          type="file"
+          multiple
+          onChange={handleFileChange}
+          className="file-input"
+        />
+        <button
           disabled={!selectedCard || selectedFiles.length === 0}
           onClick={handleUpload}
-          className="button"
-          style={{ marginTop: "32rem",marginLeft:'-35rem' }}
+          className={`upload-button ${loading ? 'loading' : ''}`}
         >
-          Upload Files
-        </button>)}
-      
+          {loading ? 'Uploading...' : 'Upload Files'}
+        </button>
       </div>
-      <div>
-        {uploadMessage && <pre style={{fontFamily:'sans-serif',marginLeft:'-12rem',marginTop:'29em'}}>{uploadMessage}</pre>}
+
+      <div className="message-container">
+        {uploadMessage && <pre style={{fontFamily:'sans-serif'}}>{uploadMessage}</pre>}
         {downloadLink && (
           <a
             href={downloadLink.href}
             download={downloadLink.download}
-            onMouseOver={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
-            onMouseOut={(e) => (e.target.style.backgroundColor = 'green')}
-            
-          style={{marginLeft:'-8rem' }}
-            className="downloadBtn"
+            className="download-button"
           >
             {downloadLink.text}
           </a>
