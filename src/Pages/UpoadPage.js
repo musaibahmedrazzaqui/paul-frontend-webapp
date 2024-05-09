@@ -28,25 +28,25 @@ const UploadPage = () => {
       }
       let url =""
       if(selectedCard == "wiltshire" || selectedCard =="business-macro"){
-        //url = 'http://13.40.49.127:5000/process-pdf/'
-        url = 'http://0.0.0.0:5000/process-pdf/'
+        url = 'http://13.40.49.127:5000/process-pdf/'
+        //url = 'http://0.0.0.0:5000/process-pdf/'
       }else if(selectedCard=='choice'){
-        //url ="http://13.40.49.127:5000/process-pdf/choice"
-        url ="http://localhost:5000/process-pdf/choice"
+        url ="http://13.40.49.127:5000/process-pdf/choice"
+        //url ="http://localhost:5000/process-pdf/choice"
       }else if(selectedCard=="alumate"){
-        //url ="http://13.40.49.127:5000/process-pdf/alumate"
-        url ="http://localhost:5000/process-pdf/alumate"
+        url ="http://13.40.49.127:5000/process-pdf/alumate"
+        //url ="http://localhost:5000/process-pdf/alumate"
       }else if(selectedCard =="thermaglaze"){
-          //url ="http://13.40.49.127:5000/process-pdf/thermaglaze"
-          url ="http://localhost:5000/process-pdf/thermaglaze"
+          url ="http://13.40.49.127:5000/process-pdf/thermaglaze"
+          //url ="http://localhost:5000/process-pdf/thermaglaze"
       }
       else if(selectedCard =="central"){
-        //url ="http://13.40.49.127:5000/process-pdf/thermaglaze"
-        url ="http://localhost:5000/process-pdf/central"
+        url ="http://13.40.49.127:5000/process-pdf/thermaglaze"
+        //url ="http://localhost:5000/process-pdf/central"
     }
       else{
-        //url ="http://13.40.49.127:5000/process-pdf/trade-first"
-        url ="http://localhost:5000/process-pdf/trade-first"
+        url ="http://13.40.49.127:5000/process-pdf/trade-first"
+        //url ="http://localhost:5000/process-pdf/trade-first"
       }
       let promises=[]
       promises.push(
