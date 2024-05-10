@@ -44,6 +44,10 @@ const UploadPage = () => {
         url ="http://13.40.49.127:5000/process-pdf/central"
         //url ="http://localhost:5000/process-pdf/central"
     }
+    else if(selectedCard =="camden"){
+      url ="http://13.40.49.127:5000/process-pdf/camden"
+      //url ="http://localhost:5000/process-pdf/camden"
+  }
       else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
         //url ="http://localhost:5000/process-pdf/trade-first"
@@ -109,6 +113,7 @@ const UploadPage = () => {
           { title: 'Alumate', shortcode: 'alumate' },
           { title: 'Thermaglaze', shortcode: 'thermaglaze' },
           { title: 'Central', shortcode: 'central' },
+          { title: 'Camden', shortcode: 'camden' },
         ].map((card) => (
           <Card
             
