@@ -10,6 +10,7 @@ const UploadPage = () => {
   const [loading,setIsloading]=useState(false)
   const handleCardClick = (cardTitle) => {
     setSelectedCard(cardTitle);
+    console.log(cardTitle)
   };
 
   const handleFileChange = (event) => {
@@ -48,6 +49,10 @@ const UploadPage = () => {
       url ="http://13.40.49.127:5000/process-pdf/camden"
       //url ="http://localhost:5000/process-pdf/camden"
   }
+  else if(selectedCard =="aph"){
+    url ="http://13.40.49.127:5000/process-pdf/aph"
+    //url ="http://localhost:5000/process-pdf/aph"
+}
       else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
         //url ="http://localhost:5000/process-pdf/trade-first"
@@ -82,9 +87,13 @@ const UploadPage = () => {
         // Handle rejected files, if any
         
         
-
+        let csvHeader;
         // Prepare download link for processed data
-        const csvHeader = 'Ref,JobNo,Customer,LocationB,Qty,Width,Height,GlassType,LocationA,GlassRequired';
+        if(selectedCard != 'aph'){
+        csvHeader = 'Ref,JobNo,Customer,LocationB,Qty,Width,Height,GlassType,LocationA,GlassRequired'
+      }else{
+        csvHeader = 'JobNo,reference,Customer,Item,Qty,Width,Height,Description,Location,Date'
+      }
         const csvDataWithHeader = csvHeader + '\n' + res[0].data;
         const blob = new Blob([csvDataWithHeader], { type: 'text/csv' });
         const downloadUrl = URL.createObjectURL(blob);
@@ -114,6 +123,7 @@ const UploadPage = () => {
           { title: 'Thermaglaze', shortcode: 'thermaglaze' },
           { title: 'Central', shortcode: 'central' },
           { title: 'Camden', shortcode: 'camden' },
+          { title:'aph', shortcode:'aph'},
         ].map((card) => (
           <Card
             

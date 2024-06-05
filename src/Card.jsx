@@ -2,8 +2,9 @@ import React from 'react';
 import "./App.css"
 const Card = ({ title, description, selectedCard,shortcode, handleCardClick }) => {
   const isSelected = shortcode === selectedCard;
-
+  //console.log(title,description,selectedCard,shortcode)
   const handleClick = () => {
+    console.log(shortcode)
     if (!isSelected) {
       handleCardClick(shortcode);
     }
