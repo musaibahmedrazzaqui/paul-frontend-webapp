@@ -57,7 +57,7 @@ const UploadPage = () => {
       //url ="http://localhost:5000/process-pdf/midwales"
     }
     else if(selectedCard =="centraframe"){
-      url ="http://13.40.49.127:5000/process-pdf/midwales"
+      url ="http://13.40.49.127:5000/process-pdf/centraframe"
       //url ="http://localhost:5000/process-pdf/centraframe"
     }
     else if(selectedCard =="vintage"){
