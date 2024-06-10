@@ -52,7 +52,18 @@ const UploadPage = () => {
   else if(selectedCard =="aph"){
     url ="http://13.40.49.127:5000/process-pdf/aph"
     //url ="http://localhost:5000/process-pdf/aph"
-}
+    } else if(selectedCard =="midwales"){
+      url ="http://13.40.49.127:5000/process-pdf/midwales"
+      //url ="http://localhost:5000/process-pdf/midwales"
+    }
+    else if(selectedCard =="centraframe"){
+      url ="http://13.40.49.127:5000/process-pdf/midwales"
+      //url ="http://localhost:5000/process-pdf/centraframe"
+    }
+    else if(selectedCard =="vintage"){
+      url ="http://13.40.49.127:5000/process-pdf/vintage"
+      //url ="http://localhost:5000/process-pdf/vintage"
+  }
       else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
         //url ="http://localhost:5000/process-pdf/trade-first"
@@ -89,10 +100,13 @@ const UploadPage = () => {
         
         let csvHeader;
         // Prepare download link for processed data
-        if(selectedCard != 'aph'){
+        if(selectedCard == 'aph'){
+          csvHeader = 'JobNo,reference,Customer,Item,Qty,Width,Height,Description,Location,Date'
+      }else if(selectedCard =='midwales'){
+        csvHeader='JobNo,Ref,Customer,Position,Qty,Width,Height,Description,Location,Date'
+      }
+      else{
         csvHeader = 'Ref,JobNo,Customer,LocationB,Qty,Width,Height,GlassType,LocationA,GlassRequired'
-      }else{
-        csvHeader = 'JobNo,reference,Customer,Item,Qty,Width,Height,Description,Location,Date'
       }
         const csvDataWithHeader = csvHeader + '\n' + res[0].data;
         const blob = new Blob([csvDataWithHeader], { type: 'text/csv' });
@@ -123,7 +137,12 @@ const UploadPage = () => {
           { title: 'Thermaglaze', shortcode: 'thermaglaze' },
           { title: 'Central', shortcode: 'central' },
           { title: 'Camden', shortcode: 'camden' },
-          { title:'aph', shortcode:'aph'},
+          { title:'APH', shortcode:'aph'},
+          { title:'Midwales', shortcode:'midwales'},
+          
+          { title:'Vintage', shortcode:'vintage'},
+          
+          { title:'Centraframe', shortcode:'centraframe'},
         ].map((card) => (
           <Card
             
