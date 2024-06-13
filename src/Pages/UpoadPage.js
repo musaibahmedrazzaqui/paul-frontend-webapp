@@ -64,6 +64,10 @@ const UploadPage = () => {
       url ="http://13.40.49.127:5000/process-pdf/vintage"
       //url ="http://localhost:5000/process-pdf/vintage"
   }
+  else if(selectedCard =="alanhill"){
+    url ="http://13.40.49.127:5000/process-pdf/alanhill"
+    //url ="http://localhost:5000/process-pdf/alanhill"
+}
       else{
         url ="http://13.40.49.127:5000/process-pdf/trade-first"
         //url ="http://localhost:5000/process-pdf/trade-first"
@@ -104,6 +108,8 @@ const UploadPage = () => {
           csvHeader = 'JobNo,reference,Customer,Item,Qty,Width,Height,Description,Location,Date'
       }else if(selectedCard =='midwales'){
         csvHeader='JobNo,Ref,Customer,Position,Qty,Width,Height,Description,Location,Date'
+      }else if(selectedCard =='alanhill'){
+        csvHeader='JobNo,Ref,Customer,Location,Qty,Width,Height,GlassType,Item,Date'
       }
       else{
         csvHeader = 'Ref,JobNo,Customer,LocationB,Qty,Width,Height,GlassType,LocationA,GlassRequired'
@@ -143,6 +149,7 @@ const UploadPage = () => {
           { title:'Vintage', shortcode:'vintage'},
           
           { title:'Centraframe', shortcode:'centraframe'},
+          { title:'Alan Hill', shortcode:'alanhill'},
         ].map((card) => (
           <Card
             
