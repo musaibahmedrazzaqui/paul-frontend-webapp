@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Card from "../Card";
 import axios from 'axios';
 
+const BASE_URL = 'http://16.171.168.37:5000';
+
 const UploadPage = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -29,47 +31,47 @@ const UploadPage = () => {
       }
       let url =""
       if(selectedCard == "wiltshire" || selectedCard =="business-macro"){
-        url = 'http://13.51.72.253:5000/process-pdf/'
+        url = `${BASE_URL}/process-pdf/`
         //url = 'http://0.0.0.0:5000/process-pdf/'
       }else if(selectedCard=='choice'){
-        url ="http://13.51.72.253:5000/process-pdf/choice"
+        url =`${BASE_URL}/process-pdf/choice`
         //url ="http://localhost:5000/process-pdf/choice"
       }else if(selectedCard=="alumate"){
-        url ="http://13.51.72.253:5000/process-pdf/alumate"
+        url =`${BASE_URL}/process-pdf/alumate`
         //url ="http://localhost:5000/process-pdf/alumate"
       }else if(selectedCard =="thermaglaze"){
-          url ="http://13.51.72.253:5000/process-pdf/thermaglaze"
+          url =`${BASE_URL}/process-pdf/thermaglaze`
           //url ="http://localhost:5000/process-pdf/thermaglaze"
       }
       else if(selectedCard =="central"){
-        url ="http://13.51.72.253:5000/process-pdf/central"
+        url =`${BASE_URL}/process-pdf/central`
         //url ="http://localhost:5000/process-pdf/central"
     }
     else if(selectedCard =="camden"){
-      url ="http://13.51.72.253:5000/process-pdf/camden"
+      url =`${BASE_URL}/process-pdf/camden`
       //url ="http://localhost:5000/process-pdf/camden"
   }
   else if(selectedCard =="aph"){
-    url ="http://13.51.72.253:5000/process-pdf/aph"
+    url =`${BASE_URL}/process-pdf/aph`
     //url ="http://localhost:5000/process-pdf/aph"
     } else if(selectedCard =="midwales"){
-      url ="http://13.51.72.253:5000/process-pdf/midwales"
+      url =`${BASE_URL}/process-pdf/midwales`
       //url ="http://localhost:5000/process-pdf/midwales"
     }
     else if(selectedCard =="centraframe"){
-      //url ="http://13.51.72.253:5000/process-pdf/centraframe"
+      //url =`${BASE_URL}/process-pdf/centraframe`
       url ="http://localhost:5000/process-pdf/centraframe"
     }
     else if(selectedCard =="vintage"){
-      url ="http://13.51.72.253:5000/process-pdf/vintage"
+      url =`${BASE_URL}/process-pdf/vintage`
       //url ="http://localhost:5000/process-pdf/vintage"
   }
   else if(selectedCard =="alanhill"){
-    url ="http://13.51.72.253:5000/process-pdf/alanhill"
+    url =`${BASE_URL}/process-pdf/alanhill`
     //url ="http://localhost:5000/process-pdf/alanhill"
 }
       else{
-        url ="http://13.51.72.253:5000/process-pdf/trade-first"
+        url =`${BASE_URL}/process-pdf/trade-first`
         //url ="http://localhost:5000/process-pdf/trade-first"
       }
       let promises=[]
